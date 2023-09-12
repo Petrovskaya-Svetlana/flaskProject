@@ -30,9 +30,23 @@ def about():  # put application's code here
     return render_template('about.html')
 
 
-@app.route('/create')
-def create():  # put application's code here
-    return render_template('create.html')
+@app.route('/create', methods=['POST', 'GET'])
+def create():
+    if request.method == 'POST':
+        title = request.form['title']
+        intro = request.form['intro']
+        text = request.form['text']
+
+        article = Article(title=title, intro=intro, text=text)
+
+        try:
+            db.session.add(article)
+            db.session.commit()
+            return redirect('/')
+        except:
+            return 'ERROR'
+    else:
+        return render_template('create.html')
 
 
 if __name__ == '__main__':
