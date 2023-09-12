@@ -32,13 +32,13 @@ def about():  # put application's code here
 
 @app.route('/posts')
 def posts():
-    articles = Article.query.order_by(Article.data).all()
+    articles = Article.query.order_by(Article.date).all()
     return render_template('posts.html', articles=articles)
 
 
 @app.route('/create', methods=['POST', 'GET'])
 def create():
-    if request.method == 'POST':
+    if request.method == "POST":
         title = request.form['title']
         intro = request.form['intro']
         text = request.form['text']
@@ -48,7 +48,8 @@ def create():
         try:
             db.session.add(article)
             db.session.commit()
-            return redirect('/')
+            return redirect('/posts')
+
         except:
             return 'ERROR'
     else:

@@ -4,11 +4,15 @@
     POSTS PAGE
 {% endblock %}
 
-
 {% block content %}
     <h1>ALL POSTS</h1>
     {% for el in articles %}
-    
+        <div class="alert alert-info">
+            <h2>{{ el.title }}</h2>
+            <p>{{ el.intro }}</p>
+            <p><b>Date: {{ el.date.date() }}</b></p>
+            <button class="btn btn-warning">detal</button>
+        </div>
     {% endfor %}
 {% endblock %}
 
