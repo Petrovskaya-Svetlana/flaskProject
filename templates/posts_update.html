@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    UPDATE PAGE
+{% endblock %}
+
+{% block content %}
+    <h1>UPDATE TASK</h1>
+    <form method="post">
+        <input type="text" name="title" id="title" class="form-control" value="{{ article.title }}" placeholder="INPUT NAME"><br>
+        <textarea name="intro" id="intro" class="form-control" placeholder="INPUT INTRO">{{ article.intro }}</textarea><br>
+        <textarea name="text" id="text" class="form-control" placeholder="INPUT TEXT">{{ article.text }}</textarea><br>
+        <div class="d-grid gap-2 col-6 mx-auto">
+            <input type="submit" class="btn btn-success" value="UPDATE">
+        </div>
+    </form>
+{% endblock %}
+
+
+
